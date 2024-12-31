@@ -1,0 +1,24 @@
+.extension {
+  background-color: #81939f;
+  color: #132726;
+  height: 600px;
+  width: 400px;
+  overflow-y: hidden;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  padding: 10px;
+}
+
+.extension.success {
+  background-color: #61dafbaa;
+  color: black;
+}
+
+.extension.error {
+  background-color: #ff6464aa;
+  color: white;
+}
