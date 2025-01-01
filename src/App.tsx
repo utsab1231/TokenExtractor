@@ -22,12 +22,19 @@ function App() {
         },
       },
       (r) => {
-        if (r[0].result) {
-          navigator.clipboard.writeText(r[0].result);
-          setShowSucessToken(true);
-          setTimeout(() => {
-            setShowSucessToken(false);
-          }, 10000);
+        if (r) {
+          if (r[0].result) {
+            navigator.clipboard.writeText(r[0].result);
+            setShowSucessToken(true);
+            setTimeout(() => {
+              setShowSucessToken(false);
+            }, 10000);
+          } else {
+            setShowErrorToken(true);
+            setTimeout(() => {
+              setShowErrorToken(false);
+            }, 10000);
+          }
         } else {
           setShowErrorToken(true);
           setTimeout(() => {
@@ -41,35 +48,37 @@ function App() {
   };
   return (
     <>
-      <div
-        className={`extension ${showSucessToken && "success"} ${
-          showErrorToken && "error"
-        }`}
-      >
-        <div>
-          <h1>Token Grabber.</h1>
+      <div className="extension">
+        <div className="header">
+          <h1>Token Grabber</h1>
           <span>Grab Your Token here.</span>
         </div>
-        <div>
+        <div className="usage">
+          <span className="usage-header">HOW TO USE</span>
           <p>
-            Usage : Input the token name to copy the token. Default value is
-            "access_token"
+            Input the token name to copy the token. <br />
+            Default value is <span className="emphasis">access_token</span>
           </p>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Enter your token name"
-            id="token-input"
-            value={tokenName}
-            onChange={(e) => setTokenName(e.target.value)}
-          />
+        <div className="main">
+          <div className="input">
+            <label htmlFor="token-input">Token Name</label>
+            <input
+              type="text"
+              placeholder="Enter your token name"
+              id="token-input"
+              value={tokenName}
+              onChange={(e) => setTokenName(e.target.value)}
+            />
+          </div>
           <button onClick={handleButtonClick}>Get Token</button>
         </div>
 
-        <div>
-          {showSucessToken && <p>Token is copied to clipboard.</p>}
-          {showErrorToken && <p>Token not found.</p>}
+        <div className="footer">
+          {showSucessToken && (
+            <div className="success">Token is copied to clipboard.</div>
+          )}
+          {showErrorToken && <div className="error">Unable to find token.</div>}
         </div>
       </div>
     </>
