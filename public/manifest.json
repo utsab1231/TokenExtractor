@@ -9,7 +9,7 @@
   },
   "description": "Tired of copying tokens from the browser dev tools? This extension will help you extract tokens from the browser console.",
   "author": "utssabad10@gmail.com",
-  "permissions": ["tabs", "activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting"],
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "index.html"
